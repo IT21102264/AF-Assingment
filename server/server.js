@@ -1,5 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const { userRouter } = require("./routes/userRoutes");
+const { userValidator } = require("./middleware/uservalidator");
+const { authenticator } = require("./middleware/authenticator");
+const { userLogger } = require("./middleware/userLogger");
+const { roleValidator } = require("./middleware/roleValidator");
 require("dotenv").config();
 
 const productRouter = require("./routes/product");
@@ -10,6 +15,13 @@ const app = express();
 // Get port number and database URI from environment variables
 const PORT = process.env.PORT;
 const URI = process.env.URI;
+
+app.use(express.json());
+app.use(userValidator);
+app.use(authenticator);
+app.use(userLogger);
+app.use("/user", roleValidator);
+app.use("/user", userRouter);
 
 // Connect to MongoDB database and start server
 mongoose
