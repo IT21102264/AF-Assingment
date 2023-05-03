@@ -5,10 +5,19 @@ const fs = require("fs");
 
 const userRouter = express.Router();
 
-userRouter.get("/", (req, res) => {
-  res.send({
-    message: "All users",
-  });
+userRouter.get("/:id", async (req, res) => {
+  let { id } = req.params;
+  try {
+    let data = await UserModel.find({ _id: id });
+    res.send({
+      message: "User available",
+      user: data,
+    });
+  } catch (eroor) {
+    res.send({
+      message: "User not found",
+    });
+  }
 });
 
 userRouter.post("/register", async (req, res) => {
@@ -50,6 +59,19 @@ userRouter.patch("/:id", async (req, res) => {
     await UserModel.findByIdAndUpdate({ _id: id }, req.body);
     res.send({
       message: "Data updated",
+    });
+  } catch (error) {
+    res.send({
+      message: error.message,
+    });
+  }
+});
+userRouter.delete("/:id", async (req, res) => {
+  let { id } = req.params;
+  try {
+    await UserModel.findByIdAndDelete({ _id: id }, req.body);
+    res.send({
+      message: "Data delted",
     });
   } catch (error) {
     res.send({
