@@ -7,6 +7,8 @@ const { userLogger } = require("./middleware/userLogger");
 const { roleValidator } = require("./middleware/roleValidator");
 require("dotenv").config();
 
+const productRouter = require("./routes/product");
+
 //Creating an express app
 const app = express();
 
@@ -32,4 +34,6 @@ mongoose
   })
   .catch((err) => {
     console.log(err.message);
-  });
+});
+
+app.use("/product", productRouter);
