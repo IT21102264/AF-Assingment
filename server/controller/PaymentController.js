@@ -12,6 +12,7 @@ const getAllPayment = async (req, res) => {
       });
   };
 
+// This function retrieves payments by id from the database
   const getPaymentById = async (req, res) => {
     await Payment.findById(req.params.id)
       .then((payment) => {
@@ -90,8 +91,6 @@ const deletePayment = async (req, res) => {
       res.status(500).send({ status: "Error...." });
     });
 };
-
-
 
 
 

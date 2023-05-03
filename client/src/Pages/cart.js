@@ -1,65 +1,29 @@
 // Import necessary modules and components
-import React, { useState } from "react";
-import cartItem from "../components/cartItem";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import CartItem from "../components/cartItem";
 import "../cart.css";
 
 
-// Define a functional component named Cart
-export default function cart() {
-  const navigate = useNavigate();
-
-
-
-  // Use reduce to calculate the total checkout price of all items in the cart
-  const checkoutPrice = info.reduce(
-    (acc, item) => acc + item.itemPrice * item.itemQuantity,
-    0
-  );
-
-
-  const clearCart = () => {
-    cartDispatch({ type: "ClearCart" });
-    clearCartContext();
+const Cart = () => {
+  
+    return (
+        <div className="cartscreen">
+          <div className="cartscreen__left">
+            <h2>Shopping Cart</h2>
+                <CartItem/>
+          </div>
+  
+          <div className="cartscreen__right">
+            <div className="cartscreen__info">
+              <p>Subtotal items</p>
+              <p>$499</p>
+            </div>
+            <div>
+              <button>Proceed To Checkout</button>
+            </div>
+          </div>
+        </div>
+    );
   };
-
-  const tabSpaces = '\u00A0'.repeat(35);
-
-  // Render the Cart component
-  return (
-    <div>
-      <Header />
-      <center>
-        <h2>Shopping Cart</h2>
-      </center>
-      <div className="cart">
-        <div className="cart__left">
-            <cartItem />
-          <hr />
-          <div>
-            {/* Render a button to clear cart */}
-            {cart.length > 0 && (
-              <button onClick={(e) => clearCart()} className="btnClear">
-                Clear Cart
-              </button>
-            )}
-          </div>
-        </div>
-        <div className="cart__right">
-          <div className="cart__info">
-            <p><center>Order Summary</center></p>
-            <p> Net Salary{tabSpaces} Rs:{checkoutPrice}</p>
-          </div>
-
-          <div>
-            {/* Render a button to proceed to checkout */}
-            <button onClick={proceedToCheckout}>Proceed To Checkout</button>
-          </div>
-        </div>
-      </div>
-
-
-      <Footer />
-    </div>
-  );
-}
+  
+  export default Cart;

@@ -3,7 +3,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const cartItem = (props) => {
+const CartItem = () => {
 
 
   return (
@@ -35,4 +35,4 @@ const cartItem = (props) => {
     </div>
   );
 };
-export default cartItem;
+export default CartItem;
