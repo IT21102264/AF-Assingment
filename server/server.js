@@ -8,6 +8,7 @@ const { roleValidator } = require("./middleware/roleValidator");
 require("dotenv").config();
 
 const productRouter = require("./routes/product");
+const paymentRouter = require("./routes/payment");
 
 //Creating an express app
 const app = express();
@@ -37,3 +38,4 @@ mongoose
 });
 
 app.use("/product", productRouter);
+app.use("/payment", paymentRouter);

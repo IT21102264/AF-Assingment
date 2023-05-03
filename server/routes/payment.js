@@ -6,7 +6,7 @@ const {
   getPaymentById,
   deletePayment,
   updatePayment,
-} = require("../controller/PaymentController"); // Importing the controller functions from '../controller/paymentController'
+} = require("../controllers/PaymentController"); // Importing the controller functions from '../controller/paymentController'
 
 //create a new payment
 router.post("/add", createPayment); // Handles POST requests to create a new payment using the createPayment() function

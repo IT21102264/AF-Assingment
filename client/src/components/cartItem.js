@@ -5,14 +5,12 @@ import React from "react";
 
 const CartItem = () => {
 
-
   return (
     <div className="cartItem">
       <div className="cartItem__image">
         <img
           src={"#"}
           style={{ width: "100px", height: "100px" }}
-          alt={props.details.itemName}
         />
       </div>
 
