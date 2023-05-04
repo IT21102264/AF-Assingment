@@ -37,7 +37,7 @@ function Header() {
           )}
         </div>
         <div>
-            <Link to={"/"}><FontAwesomeIcon icon={faShoppingCart} /></Link>
+            <Link to={"/Cart"}><FontAwesomeIcon icon={faShoppingCart} /></Link>
         </div>
       </div>
     </header>

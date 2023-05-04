@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import AboutPage from "../pages/AboutPage";
-import HomePage from "../pages/HomePage";
-import ShopPage from "../pages/ShopPage";
-import LoginPage from "../pages/LoginPage";
-import SignupPage from "../pages/SignupPage";
-import AdminPage from "../pages/AdminPage";
+import AboutPage from "../Pages/AboutPage";
+import HomePage from "../Pages/HomePage";
+import ShopPage from "../Pages/ShopPage";
+import LoginPage from "../Pages/LoginPage";
+import SignupPage from "../Pages/SignupPage";
+import AdminPage from "../Pages/AdminPage";
 
 export default function Allroutes() {
   return (
