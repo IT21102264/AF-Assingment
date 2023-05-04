@@ -1,8 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import AboutPage from "../pages/AboutPage";
-import HomePage from "../pages/HomePage";
-import LoginPage from "../pages/LoginPage";
-import SignupPage from "../pages/SignupPage";
+import AboutPage from "../Pages/AboutPage"
+import HomePage from "../Pages/HomePage";
+import LoginPage from "../Pages/LoginPage";
+import SignupPage from "../Pages/SignupPage";
+import PayPage from "../Pages/PayPage";
+
 
 export default function Allroutes() {
   return (
@@ -11,6 +13,8 @@ export default function Allroutes() {
       <Route path="/about" element={<AboutPage></AboutPage>}></Route>
       <Route path="/login" element={<LoginPage></LoginPage>}></Route>
       <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
+      <Route path="/payment" element={<PayPage></PayPage>}></Route>
+
     </Routes>
   );
 }
