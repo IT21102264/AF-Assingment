@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { userRouter } = require("./routes/userRoutes");
 const productRouter = require("./routes/product");
+const { userRouter } = require("./routes/UserRoutes");
 const { userValidator } = require("./middleware/uservalidator");
 const { authenticator } = require("./middleware/authenticator");
 const { userLogger } = require("./middleware/userLogger");
