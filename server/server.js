@@ -7,7 +7,7 @@ const { userLogger } = require("./middleware/userLogger");
 const { roleValidator } = require("./middleware/roleValidator");
 require("dotenv").config();
 
-const productRouter = require("./routes/product");
+//const productRouter = require("./routes/product");
 
 //Creating an express app
 const app = express();
@@ -22,6 +22,7 @@ app.use(authenticator);
 app.use(userLogger);
 app.use("/user", roleValidator);
 app.use("/user", userRouter);
+//app.use("/product", productRouter);
 
 // Connect to MongoDB database and start server
 mongoose
@@ -35,5 +36,3 @@ mongoose
   .catch((err) => {
     console.log(err.message);
 });
-
-app.use("/product", productRouter);

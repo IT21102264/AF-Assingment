@@ -1,5 +1,11 @@
-import { Box } from "@chakra-ui/react";
+import Header from "../components/Header";
+import { Slider } from "../components/Slider";
 
 export default function HomePage() {
-  return <Box>Home page</Box>;
+  return (
+    <div>
+      <Header />
+      <Slider />
+    </div>
+  );
 }
