@@ -19,7 +19,7 @@ function Header() {
       <nav>
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/">Shop</Link></li>
+          <li><Link to="/shop">Shop</Link></li>
           <li><Link to="/">Blog</Link></li>
           <li><Link to="/">Contact</Link></li>
         </ul>
@@ -32,7 +32,7 @@ function Header() {
             <ul className="dropdown-menu">
               <li><Link to="/login">Login</Link></li>
               <li><Link to="/register">Register</Link></li>
-              <li><Link to="/register">Account</Link></li>
+              <li><Link to="/admin">Account</Link></li>
             </ul>
           )}
         </div>

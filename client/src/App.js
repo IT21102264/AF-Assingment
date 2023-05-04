@@ -1,13 +1,12 @@
-import './App.css';
-import Header from './components/Header';
-import { Slider } from './components/Slider';
+import "./App.css";
+import { Box } from "@chakra-ui/react";
+import Allroutes from "./routes/AllRoutes";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Slider />
-    </div>
+    <Box className="App">
+      <Allroutes />
+    </Box>
   );
 }
 
