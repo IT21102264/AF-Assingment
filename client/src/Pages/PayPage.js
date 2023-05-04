@@ -4,7 +4,7 @@ import axios from "axios";
 import { Box, Input, Button, VStack, Flex } from "@chakra-ui/react";
 
 
-const PayPage = () => {
+export default function PayPage() {
 
     const [cardholdername, setCardHolderName] = useState("");
     const [cardNumber, setCardNumber] = useState("");
@@ -90,11 +90,27 @@ return (
             ></Input>
         </div>
     </div>
+     <Button
+          onClick={async () => {
 
-      <Button type="submit">Pay</Button>
+            let payment = {
+                cardholdername: cardholdername.current.value,
+                cardNumber: cardNumber.current.value,
+                expiry: expiry.current.value,
+                cvv: cvv.current.value,
+                amount: amount.current.value,
+            };
+
+            let data = await axios.post(
+              "http://localhost:4000/payment/add",
+              payment
+            );
+            console.log(data);
+          }}
+        >
+          Signup
+        </Button>
     </Flex>
   </Box>
   );
-};
-
-export default PayPage;
+}

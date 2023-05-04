@@ -1,4 +1,4 @@
-// Import necessary modules and components
+
 import React from "react";
 import CartItem from "../components/cartItem";
 import "../cart.css";
@@ -8,6 +8,7 @@ const Cart = () => {
   
     return (
         <div className="cartscreen">
+          <Header />
           <div className="cartscreen__left">
             <h2>Shopping Cart</h2>
                 <CartItem/>
