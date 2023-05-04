@@ -20,8 +20,8 @@ function Header() {
         <ul>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/shop">Shop</Link></li>
-          <li><Link to="/">Blog</Link></li>
-          <li><Link to="/">Contact</Link></li>
+          <li><Link to="/shop">Blog</Link></li>
+          <li><Link to="/shop">Contact</Link></li>
         </ul>
       </nav>
       <div className='iconBtn'>
