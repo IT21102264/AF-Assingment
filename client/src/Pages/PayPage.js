@@ -14,14 +14,14 @@ export default function PayPage() {
     const sentData = async (event) => {
         event.preventDefault();
 
-        const data = {
+        const newPayment = {
             cardholdername,
             cardnumber,
             expdate,
             cvv,
           }
           
-          axios.post("http://localhost:4000/payment/add", data).then(() => {
+          axios.post("http://localhost:4000/payment/add", newPayment).then(() => {
             alert("Sent data");
           }).catch(err => {
             alert(err)
@@ -72,7 +72,7 @@ return (
             ></Input>
         </div>
     </div>
-     <Button onClick={sentData}>Signup</Button>
+     <Button onClick={sentData}>PayNow</Button>
     </Flex>
   </Box>
   );
