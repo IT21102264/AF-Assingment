@@ -5,16 +5,32 @@ import ShopPage from "../pages/ShopPage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import AdminPage from "../pages/AdminPage";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export default function Allroutes() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage></HomePage>}></Route>
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <HomePage></HomePage>
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/about" element={<AboutPage></AboutPage>}></Route>
       <Route path="/login" element={<LoginPage></LoginPage>}></Route>
       <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
-      <Route path="/admin" element={<AdminPage />} />
+      <Route
+        path="/admin"
+        element={
+          <AdminRoute>
+            <AdminPage />
+          </AdminRoute>
+        }
+      />
     </Routes>
   );
 }

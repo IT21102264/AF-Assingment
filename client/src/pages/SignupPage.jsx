@@ -13,7 +13,13 @@ export default function SignupPage() {
 
   return (
     <Box mt="60px">
-      <Flex gap={6} alignItems={"center"} direction={"column"} w="40%" m="auto">
+      <Flex
+        gap={20}
+        alignItems={"center"}
+        direction={"column"}
+        w="40%"
+        m="auto"
+      >
         <Input
           value={username}
           placeholder="username"
@@ -69,10 +75,10 @@ export default function SignupPage() {
                 dob: dob,
               };
               let data = await axios.post(
-                "http://localhost:4000/user/register",
+                "http://localhost:5000/user/register",
                 user
               );
-              console.log(data);
+              alert("Registered successfully");
             } catch (error) {
               console.log(error);
               alert("Failed to register. Please try again later.");
