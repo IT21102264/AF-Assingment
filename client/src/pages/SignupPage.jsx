@@ -1,6 +1,6 @@
-import { Box, Input, Button, VStack, Flex } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Input, Button, Flex } from "@chakra-ui/react";
 import axios from "axios";
+import { useState } from "react";
 
 export default function SignupPage() {
   let [email, setEmail] = useState("");
@@ -53,26 +53,30 @@ export default function SignupPage() {
           value={dob}
           onChange={(e) => setDob(e.target.value)}
         ></Input>
-
         <Button
           onClick={async () => {
-            if (cpassword != password) {
-              alert("Password not matching");
-              return;
+            try {
+              if (cpassword != password) {
+                alert("Password not matching");
+                return;
+              }
+              let user = {
+                username: username,
+                password: password,
+                email: email,
+                role: role,
+                location: location,
+                dob: dob,
+              };
+              let data = await axios.post(
+                "https://localhost:4000/user/register",
+                user
+              );
+              console.log(data);
+            } catch (error) {
+              console.log(error);
+              alert("Failed to register. Please try again later.");
             }
-            let user = {
-              username: username,
-              password: password,
-              role: role,
-              location: location,
-              dob: dob,
-            };
-
-            let data = await axios.post(
-              "http://localhost:4000/user/register",
-              user
-            );
-            console.log(data);
           }}
         >
           Signup

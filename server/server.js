@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { userRouter } = require("./routes/userRoutes");
+const { userRouter } = require("./routes/UserRoutes");
 const { userValidator } = require("./middleware/uservalidator");
 const { authenticator } = require("./middleware/authenticator");
 const { userLogger } = require("./middleware/userLogger");
 const { roleValidator } = require("./middleware/roleValidator");
 require("dotenv").config();
 
-const productRouter = require("./routes/product");
+//const productRouter = require("./routes/product");
 
 //Creating an express app
 const app = express();
@@ -34,6 +34,6 @@ mongoose
   })
   .catch((err) => {
     console.log(err.message);
-});
+  });
 
-app.use("/product", productRouter);
+//app.use("/product", productRouter);
