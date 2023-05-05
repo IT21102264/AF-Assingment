@@ -7,38 +7,29 @@ import { Box, Input, Button, VStack, Flex } from "@chakra-ui/react";
 export default function PayPage() {
 
     const [cardholdername, setCardHolderName] = useState("");
-    const [cardNumber, setCardNumber] = useState("");
-    const [expiry, setExpiry] = useState("");
+    const [cardnumber, setCardNumber] = useState("");
+    const [expdate, setExpiry] = useState("");
     const [cvv, setCvv] = useState("");
-    const [amount, setAmount] = useState("");
   
-    // const handleSubmit = (event) => {
-    //   event.preventDefault();
-    //   // send payment details to the server for processing
-    // };
-  
-  
-  const onhandleSubmit = async (event) => {
-    event.preventDefault();
+    const sentData = async (event) => {
+        event.preventDefault();
 
-    const data = await savePayment({
-      cardholdername: cardholdername.current.value,
-      cardNumber: cardNumber.current.value,
-      expiry: expiry.current.value,
-      cvv: cvv.current.value,
-      amount: amount.current.value,
-    });
-
-    //To clear the form after submission
-    cardholdername.current.value = "";
-    cardNumber.current.value = "";
-    expiry.current.value = "";
-    cvv.current.value = "";
-    amount.current.value = "";
-  };
+        const data = {
+            cardholdername,
+            cardnumber,
+            expdate,
+            cvv,
+          }
+          
+          axios.post("http://localhost:4000/payment/add", data).then(() => {
+            alert("Sent data");
+          }).catch(err => {
+            alert(err)
+          })
+      };
 
 return (
-    <Box mt="60px" onSubmit={(e) => onhandleSubmit(e)}>
+    <Box mt="60px">
     <Flex gap={6} alignItems={"center"} direction={"column"} w="40%" m="auto">
     <div className="row">
         <div className="col-md-4 mb-3">
@@ -53,26 +44,17 @@ return (
         <div className="col-md-4 mb-3">
         <label for="validationnumber">Card Number</label>
             <Input
-                value={cardNumber}
+                value={cardnumber}
                 placeholder="cardNumber"
                 required
                 onChange={(e) => setCardNumber(e.target.value)}
             ></Input>
         </div>
         <div className="col-md-4 mb-3">
-        <label for="amount">Bill Ammount</label>
-            <Input
-                value={amount}
-                placeholder="Rs:0.00"
-                required
-                onChange={(e) => setAmount(e.target.value)}
-            ></Input>
-        </div>
-        <div className="col-md-4 mb-3">
         <label for="validationdate">Expire Date</label>
             <Input
                 type={"date"}
-                value={expiry}
+                value={expdate}
                 placeholder="expiry"
                 required
                 onChange={(e) => setExpiry(e.target.value)}
@@ -90,26 +72,7 @@ return (
             ></Input>
         </div>
     </div>
-     <Button
-          onClick={async () => {
-
-            let payment = {
-                cardholdername: cardholdername.current.value,
-                cardNumber: cardNumber.current.value,
-                expiry: expiry.current.value,
-                cvv: cvv.current.value,
-                amount: amount.current.value,
-            };
-
-            let data = await axios.post(
-              "http://localhost:4000/payment/add",
-              payment
-            );
-            console.log(data);
-          }}
-        >
-          Signup
-        </Button>
+     <Button onClick={sentData}>Signup</Button>
     </Flex>
   </Box>
   );

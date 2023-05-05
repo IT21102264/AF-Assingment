@@ -10,17 +10,13 @@ const paymentSchema = new Schema({
         type: 'number',
         required: true,
     },
-    amount: {
-        type: 'number',
-        required:true,
-    },
     expdate: {
         type: Date,
         required: true,
     },
-    userID: {
-        type: String,
-        required: true
+    cvv: {
+        type: 'number',
+        required: true,
     },
 
 
