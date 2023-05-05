@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import AboutPage from "../Pages/AboutPage";
-import HomePage from "../Pages/HomePage";
-import ShopPage from "../Pages/ShopPage";
-import LoginPage from "../Pages/LoginPage";
-import SignupPage from "../Pages/SignupPage";
-import AdminPage from "../Pages/AdminPage";
-import Cart from "../Pages/Cart";
+import AboutPage from "../pages/AboutPage";
+import HomePage from "../pages/HomePage";
+import ShopPage from "../pages/ShopPage";
+import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
+import AdminPage from "../pages/AdminPage";
+import { Products } from "../pages/Products";
+import { AddProducts } from "../pages/AddProduct";
 
 export default function Allroutes() {
   return (
@@ -16,7 +17,8 @@ export default function Allroutes() {
       <Route path="/login" element={<LoginPage></LoginPage>}></Route>
       <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
       <Route path="/admin" element={<AdminPage />} />
-      <Route path="/cart" element={<Cart></Cart>} />
+      <Route path="/admin/products" element={<Products />} />
+      <Route path="/admin/addProducts" element={<AddProducts />} />
     </Routes>
   );
 }
