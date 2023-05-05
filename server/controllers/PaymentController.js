@@ -28,26 +28,16 @@ const getAllPayment = async (req, res) => {
 const createPayment = async (req, res) => {
     const cardholdername = req.body.cardholdername;
     const cardnumber = Number(req.body.cardnumber);
-    const amount = Number(req.body.amount);
-    const { expdate, userID } = req.body;
+    const expdate = Date.parse(req.body.expdate);
+    const cvv = Number(req.body.cvv);
 
-  // Creating a new payment object
-  const newPayment = new Payment({
-    cardholdername,
-    cardnumber,
-    amount,
-    expdate,
-    userID,
-  });
+    const newPayment = new Payment({cardholdername, cardnumber, expdate, cvv });
 
-  // Saving the payment object to the database
-
-  try {
-    const data = await newPayment.save();
-    res.json(data);
-  } catch (err) {
-    res.send(err.message);
-  }
+    newPayment.save().then(() => {
+      res.json("Added payment to database");
+    }).catch((err) => {
+      console.log(err);
+    })
 };
 
 
