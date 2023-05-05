@@ -69,7 +69,7 @@ export default function SignupPage() {
                 dob: dob,
               };
               let data = await axios.post(
-                "https://localhost:4000/user/register",
+                "http://localhost:4000/user/register",
                 user
               );
               console.log(data);
