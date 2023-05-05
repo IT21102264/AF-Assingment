@@ -5,6 +5,8 @@ import ShopPage from "../pages/ShopPage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import AdminPage from "../pages/AdminPage";
+import { Products } from "../pages/Products";
+import { AddProducts } from "../pages/AddProduct";
 
 export default function Allroutes() {
   return (
@@ -15,6 +17,8 @@ export default function Allroutes() {
       <Route path="/login" element={<LoginPage></LoginPage>}></Route>
       <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/admin/products" element={<Products />} />
+      <Route path="/admin/addProducts" element={<AddProducts />} />
     </Routes>
   );
 }
