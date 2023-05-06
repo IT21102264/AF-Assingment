@@ -2,7 +2,6 @@ import React from 'react'
 import { useState } from "react";
 import axios from "axios";
 import "./PayPage.css";
-import { Box, Input, Button, VStack, Flex } from "@chakra-ui/react";
 import Header from '../components/Header';
 
 
@@ -23,7 +22,7 @@ export default function PayPage() {
             cvv: cvv,
           }
           
-          axios.post("http://localhost:4000/payment/add", newPayment).then(() => {
+          axios.post("http://localhost:5000/payment/add", newPayment).then(() => {
             alert("Payment Successfully...");
           }).catch(err => {
             console.log(err);
