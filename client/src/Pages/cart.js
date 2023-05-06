@@ -1,16 +1,14 @@
 
 import React from "react";
 import CartItem from "../components/cartItem";
-import "./Cart.css";
-import Header from "../components/Header";
+import "../cart.css";
+
 
 const Cart = () => {
   
     return (
-      <div>
-        <Header />
         <div className="cartscreen">
-          
+          <Header />
           <div className="cartscreen__left">
             <h2>Shopping Cart</h2>
                 <CartItem/>
@@ -25,7 +23,6 @@ const Cart = () => {
               <button>Proceed To Checkout</button>
             </div>
           </div>
-        </div>
         </div>
     );
   };
