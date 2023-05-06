@@ -2,12 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const productRouter = require("./routes/product");
-const { userRouter } = require("./routes/UserRoutes");
 const paymentRouter = require("./routes/payment");
 const { userValidator } = require("./middleware/uservalidator");
 const { authenticator } = require("./middleware/authenticator");
 const { userLogger } = require("./middleware/userLogger");
 const { roleValidator } = require("./middleware/roleValidator");
+const { userRouter } = require("./routes/userRoutes");
 require("dotenv").config();
 
 //const productRouter = require("./routes/product");

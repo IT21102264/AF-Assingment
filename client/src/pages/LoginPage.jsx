@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Login } from "../redux/authactions";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function LoginPage() {
   let [username, setUsername] = useState("");
@@ -79,7 +80,7 @@ export default function LoginPage() {
                     role: data.data.userDetails.role,
                   })
                 );
-                alert("Login Sucessful")
+                alert("Login Sucessful");
               } catch (error) {
                 console.log(error);
                 alert("Failed to Login. Please try again later.");
@@ -90,6 +91,7 @@ export default function LoginPage() {
           </Button>
         </form>
       </div>
+      <Footer />
     </div>
   );
 }

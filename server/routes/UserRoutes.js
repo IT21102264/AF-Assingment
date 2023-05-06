@@ -25,6 +25,16 @@ userRouter.get("/:id", async (req, res) => {
   }
 });
 
+userRouter.get("/", async (req, res) => {
+  try {
+    const users = await UserModel.find({});
+    res.json(users);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
+});
+
 userRouter.post("/register", async (req, res) => {
   try {
     const data = new UserModel(req.body);

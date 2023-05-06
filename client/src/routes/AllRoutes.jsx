@@ -10,6 +10,7 @@ import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import HomePage from "../pages/HomePage";
 import Cart from "../pages/Cart";
+import { Users } from "../pages/Users";
 
 export default function Allroutes() {
   return (
@@ -32,6 +33,7 @@ export default function Allroutes() {
       <Route path="/admin/addProducts" element={<AddProducts />} />
       <Route path="/cart" element={<Cart></Cart>} />
       <Route path="/paypage" element={<PayPage></PayPage>} />
+      <Route path="/admin/users" element={<Users></Users>} />
     </Routes>
   );
 }
