@@ -24,10 +24,17 @@ export default function PayPage() {
           
           axios.post("http://localhost:5000/payment/add", newPayment).then(() => {
             alert("Payment Successfully...");
+            
+              //To clear the form after submission
+              cardholdername.current.value = "";
+              cardnumber.current.value = "";
+              expdate.current.value = "";
+              cvv.current.value = "";
           }).catch(err => {
             console.log(err);
             alert("Failed to register. Please try again later.");
           })
+
       };
 
 return (
