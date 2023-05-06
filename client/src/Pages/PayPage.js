@@ -14,17 +14,18 @@ export default function PayPage() {
     const sentData = async (event) => {
         event.preventDefault();
 
-        const newPayment = {
-            cardholdername,
-            cardnumber,
-            expdate,
-            cvv,
+        let newPayment = {
+            cardholdername: cardholdername,
+            cardnumber: cardnumber,
+            expdate: expdate,
+            cvv: cvv,
           }
           
-          axios.post("http://localhost:4000/payment/add", newPayment).then(() => {
+          axios.post("http://localhost:5000/payment/add", newPayment).then(() => {
             alert("Sent data");
           }).catch(err => {
-            alert(err)
+            console.log(err);
+            alert("Failed to register. Please try again later.");
           })
       };
 
