@@ -1,29 +1,34 @@
 const express = require("express");
 const { UserModel } = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
 
 const userRouter = express.Router();
 
 userRouter.get("/:id", async (req, res) => {
-  let { id } = req.params;
+  const { id } = req.params;
   try {
-    let data = await UserModel.find({ _id: id });
+    const data = await UserModel.findById(id);
+    if (data) {
+      res.send({
+        message: "User available",
+        user: data,
+      });
+    } else {
+      res.send({
+        message: "User not found",
+      });
+    }
+  } catch (error) {
     res.send({
-      message: "User available",
-      user: data,
-    });
-  } catch (eroor) {
-    res.send({
-      message: "User not found",
+      message: error.message,
     });
   }
 });
 
 userRouter.post("/register", async (req, res) => {
   try {
-    let data = new UserModel(req.body);
-    data.save();
+    const data = new UserModel(req.body);
+    await data.save();
     res.send({
       message: "User registration successful",
     });
@@ -33,19 +38,25 @@ userRouter.post("/register", async (req, res) => {
     });
   }
 });
-userRouter.post("/login", async (req, res) => {
-  var token = jwt.sign(req.body, "nisura");
-  try {
-    let data = await UserModel.find(req.body);
 
-    res.send({
-      message: "login successful",
-      token: token,
-      userDetails: {
-        username: data[0].username,
-        role: data[0].role,
-      },
-    });
+userRouter.post("/login", async (req, res) => {
+  try {
+    const data = await UserModel.findOne(req.body);
+    if (data) {
+      const token = jwt.sign(req.body, "nisura");
+      res.send({
+        message: "login successful",
+        token,
+        userDetails: {
+          username: data.username,
+          role: data.role,
+        },
+      });
+    } else {
+      res.send({
+        message: "Invalid username or password",
+      });
+    }
   } catch (error) {
     res.send({
       message: error.message,
@@ -54,9 +65,9 @@ userRouter.post("/login", async (req, res) => {
 });
 
 userRouter.patch("/:id", async (req, res) => {
-  let { id } = req.params;
+  const { id } = req.params;
   try {
-    await UserModel.findByIdAndUpdate({ _id: id }, req.body);
+    await UserModel.findByIdAndUpdate(id, req.body);
     res.send({
       message: "Data updated",
     });
@@ -66,12 +77,13 @@ userRouter.patch("/:id", async (req, res) => {
     });
   }
 });
+
 userRouter.delete("/:id", async (req, res) => {
-  let { id } = req.params;
+  const { id } = req.params;
   try {
-    await UserModel.findByIdAndDelete({ _id: id }, req.body);
+    await UserModel.findByIdAndDelete(id);
     res.send({
-      message: "Data delted",
+      message: "Data deleted",
     });
   } catch (error) {
     res.send({
