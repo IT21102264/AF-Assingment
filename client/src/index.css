@@ -28,10 +28,12 @@ code {
 }
 
 .login-c {
-  padding: 80px 80px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
+  padding: 20px 80px;
 }
 .login-c form {
 
