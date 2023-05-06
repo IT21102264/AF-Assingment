@@ -79,6 +79,7 @@ export default function LoginPage() {
                     role: data.data.userDetails.role,
                   })
                 );
+                alert("Login Sucessful")
               } catch (error) {
                 console.log(error);
                 alert("Failed to Login. Please try again later.");

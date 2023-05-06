@@ -5,7 +5,7 @@ import ShopPage from "../pages/ShopPage";
 import LoginPage from "../pages/LoginPage";
 import SignupPage from "../pages/SignupPage";
 import AdminPage from "../pages/AdminPage";
-import PrivateRoute from "./PrivateRoute";
+
 import AdminRoute from "./AdminRoute";
 
 export default function Allroutes() {
@@ -14,9 +14,9 @@ export default function Allroutes() {
       <Route
         path="/"
         element={
-          <PrivateRoute>
+          
             <HomePage></HomePage>
-          </PrivateRoute>
+          
         }
       ></Route>
       <Route path="/shop" element={<ShopPage />} />
