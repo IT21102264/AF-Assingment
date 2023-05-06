@@ -24,7 +24,7 @@ export default function PayPage() {
           }
           
           axios.post("http://localhost:4000/payment/add", newPayment).then(() => {
-            alert("Sent data");
+            alert("Payment Successfully...");
           }).catch(err => {
             console.log(err);
             alert("Failed to register. Please try again later.");
@@ -42,19 +42,19 @@ return (
               <div class="user-details">
                 <div class="input-box">
                   <label class="details">Card Holder Name</label>
-                  <input type="text" placeholder="Enter Card Holder name"  onChange={(e) => setCardHolderName(e.target.value)} required />
+                  <input type="text" placeholder="Binuja Nawod"  onChange={(e) => setCardHolderName(e.target.value)} required />
                 </div>
                 <div class="input-box">
                   <label class="details">Card Number</label>
-                  <input type="number" placeholder="Enter card number"  onChange={(e) => setCardNumber(e.target.value)} required />	  
+                  <input type="number" placeholder="15xx-xxxx-xxxx-xxxx" maxlength="12" minlength="12" onChange={(e) => setCardNumber(e.target.value)} required />	  
                 </div>
                 <div class="input-box">
                   <label class="details">Expire date</label>
-                  <input type="date"  placeholder="Enter Exp date"  onChange={(e) => setExpiry(e.target.value)} required />
+                  <input type="date"  placeholder="01/05"  onChange={(e) => setExpiry(e.target.value)} required />
                 </div>
                 <div class="input-box">
                   <label class="details">Cvv</label>
-                  <input type="number" placeholder="Enter cvv no"  onChange={(e) => setCvv(e.target.value)} required />
+                  <input type="number" placeholder="xxx" maxlength="3" minlength="3" onChange={(e) => setCvv(e.target.value)} required />
                 </div><br/>
 
               </div>
