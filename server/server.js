@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const productRouter = require("./routes/product");
 const { userRouter } = require("./routes/UserRoutes");
@@ -15,6 +16,8 @@ const app = express();
 // Get port number and database URI from environment variables
 const PORT = process.env.PORT;
 const URI = process.env.URI;
+
+app.use(cors());
 
 app.use(express.json());
 app.use(userValidator);
