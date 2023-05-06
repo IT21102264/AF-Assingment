@@ -1,6 +1,6 @@
-import { Box, Input, Button, VStack, Flex } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Input, Button, Flex } from "@chakra-ui/react";
 import axios from "axios";
+import { useState } from "react";
 
 export default function SignupPage() {
   let [email, setEmail] = useState("");
@@ -13,7 +13,13 @@ export default function SignupPage() {
 
   return (
     <Box mt="60px">
-      <Flex gap={6} alignItems={"center"} direction={"column"} w="40%" m="auto">
+      <Flex
+        gap={20}
+        alignItems={"center"}
+        direction={"column"}
+        w="40%"
+        m="auto"
+      >
         <Input
           value={username}
           placeholder="username"
@@ -53,26 +59,30 @@ export default function SignupPage() {
           value={dob}
           onChange={(e) => setDob(e.target.value)}
         ></Input>
-
         <Button
           onClick={async () => {
-            if (cpassword != password) {
-              alert("Password not matching");
-              return;
+            try {
+              if (cpassword != password) {
+                alert("Password not matching");
+                return;
+              }
+              let user = {
+                username: username,
+                password: password,
+                email: email,
+                role: role,
+                location: location,
+                dob: dob,
+              };
+              let data = await axios.post(
+                "http://localhost:5000/user/register",
+                user
+              );
+              alert("Registered successfully");
+            } catch (error) {
+              console.log(error);
+              alert("Failed to register. Please try again later.");
             }
-            let user = {
-              username: username,
-              password: password,
-              role: role,
-              location: location,
-              dob: dob,
-            };
-
-            let data = await axios.post(
-              "http://localhost:4000/user/register",
-              user
-            );
-            console.log(data);
           }}
         >
           Signup

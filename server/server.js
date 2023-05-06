@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const productRouter = require("./routes/product");
 const { userRouter } = require("./routes/UserRoutes");
@@ -9,12 +10,16 @@ const { userLogger } = require("./middleware/userLogger");
 const { roleValidator } = require("./middleware/roleValidator");
 require("dotenv").config();
 
+//const productRouter = require("./routes/product");
+
 //Creating an express app
 const app = express();
 
 // Get port number and database URI from environment variables
 const PORT = process.env.PORT;
 const URI = process.env.URI;
+
+app.use(cors());
 
 app.use(express.json());
 app.use(userValidator);
@@ -36,4 +41,4 @@ mongoose
   })
   .catch((err) => {
     console.log(err.message);
-});
+  });
