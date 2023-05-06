@@ -1,116 +1,69 @@
 import React from 'react'
 import { useState } from "react";
 import axios from "axios";
+import "./PayPage.css";
 import { Box, Input, Button, VStack, Flex } from "@chakra-ui/react";
+import Header from '../components/Header';
 
 
 export default function PayPage() {
 
     const [cardholdername, setCardHolderName] = useState("");
-    const [cardNumber, setCardNumber] = useState("");
-    const [expiry, setExpiry] = useState("");
+    const [cardnumber, setCardNumber] = useState("");
+    const [expdate, setExpiry] = useState("");
     const [cvv, setCvv] = useState("");
-    const [amount, setAmount] = useState("");
   
-    // const handleSubmit = (event) => {
-    //   event.preventDefault();
-    //   // send payment details to the server for processing
-    // };
-  
-  
-  const onhandleSubmit = async (event) => {
-    event.preventDefault();
+    const sentData = async (event) => {
+        event.preventDefault();
 
-    const data = await savePayment({
-      cardholdername: cardholdername.current.value,
-      cardNumber: cardNumber.current.value,
-      expiry: expiry.current.value,
-      cvv: cvv.current.value,
-      amount: amount.current.value,
-    });
-
-    //To clear the form after submission
-    cardholdername.current.value = "";
-    cardNumber.current.value = "";
-    expiry.current.value = "";
-    cvv.current.value = "";
-    amount.current.value = "";
-  };
+        let newPayment = {
+            cardholdername: cardholdername,
+            cardnumber: cardnumber,
+            expdate: expdate,
+            cvv: cvv,
+          }
+          
+          axios.post("http://localhost:4000/payment/add", newPayment).then(() => {
+            alert("Sent data");
+          }).catch(err => {
+            console.log(err);
+            alert("Failed to register. Please try again later.");
+          })
+      };
 
 return (
-    <Box mt="60px" onSubmit={(e) => onhandleSubmit(e)}>
-    <Flex gap={6} alignItems={"center"} direction={"column"} w="40%" m="auto">
-    <div className="row">
-        <div className="col-md-4 mb-3">
-        <label for="validationname">Card Holdername</label>
-            <Input
-                value={cardholdername}
-                placeholder="cardholdername"
-                required
-                onChange={(e) => setCardHolderName(e.target.value)}
-            ></Input>
-        </div>
-        <div className="col-md-4 mb-3">
-        <label for="validationnumber">Card Number</label>
-            <Input
-                value={cardNumber}
-                placeholder="cardNumber"
-                required
-                onChange={(e) => setCardNumber(e.target.value)}
-            ></Input>
-        </div>
-        <div className="col-md-4 mb-3">
-        <label for="amount">Bill Ammount</label>
-            <Input
-                value={amount}
-                placeholder="Rs:0.00"
-                required
-                onChange={(e) => setAmount(e.target.value)}
-            ></Input>
-        </div>
-        <div className="col-md-4 mb-3">
-        <label for="validationdate">Expire Date</label>
-            <Input
-                type={"date"}
-                value={expiry}
-                placeholder="expiry"
-                required
-                onChange={(e) => setExpiry(e.target.value)}
-            ></Input>
-        </div>
-        <div className="col-md-4 mb-3">
-        <label for="validationcvv">Cvv No</label>
-            <Input
-                value={cvv}
-                placeholder="cvv"
-                minLength="3"
-                maxLength="3"
-                required
-                onChange={(e) => setCvv(e.target.value)}
-            ></Input>
-        </div>
-    </div>
-     <Button
-          onClick={async () => {
+  <div>
+    <Header />
+    <div class="container">
+    <center><div class="title">Bill Payment Form</div></center>
+    <hr></hr>
+      <div class="content">
+            <form action="adver.php" method="post">
+              <div class="user-details">
+                <div class="input-box">
+                  <label class="details">Card Holder Name</label>
+                  <input type="text" placeholder="Enter Card Holder name"  onChange={(e) => setCardHolderName(e.target.value)} required />
+                </div>
+                <div class="input-box">
+                  <label class="details">Card Number</label>
+                  <input type="number" placeholder="Enter card number"  onChange={(e) => setCardNumber(e.target.value)} required />	  
+                </div>
+                <div class="input-box">
+                  <label class="details">Expire date</label>
+                  <input type="date"  placeholder="Enter Exp date"  onChange={(e) => setExpiry(e.target.value)} required />
+                </div>
+                <div class="input-box">
+                  <label class="details">Cvv</label>
+                  <input type="number" placeholder="Enter cvv no"  onChange={(e) => setCvv(e.target.value)} required />
+                </div><br/>
 
-            let payment = {
-                cardholdername: cardholdername.current.value,
-                cardNumber: cardNumber.current.value,
-                expiry: expiry.current.value,
-                cvv: cvv.current.value,
-                amount: amount.current.value,
-            };
+              </div>
+              <center><Button onClick={sentData}>Process to checkout</Button></center>
+          </form>
+      </div>
+		</div>
 
-            let data = await axios.post(
-              "http://localhost:4000/payment/add",
-              payment
-            );
-            console.log(data);
-          }}
-        >
-          Signup
-        </Button>
-    </Flex>
-  </Box>
+  </div>
+
   );
 }
