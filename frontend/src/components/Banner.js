@@ -6,7 +6,7 @@ export function ActionBanner() {
   const { dispatch } = UseUserContext();
 
   return (
-    <section id="action" className="section-m1">
+    <section id="action" className="container">
       <h4>Seller Corner</h4>
       <h2>
         Join with us <span>Create your store in 3 steps</span>
@@ -29,20 +29,6 @@ export function ActionBanner() {
   );
 }
 
-export function HomeBanner() {
-  return (
-    <section id="HomeBanner">
-      <h4>Trade-in-offer</h4>
-      <h2>Super value deals</h2>
-      <h1>On all products</h1>
-      <p>Pick Your Herbal Cure</p>
-
-      <Link to="/buyer/product" style={{ textDecoration: "none" }}>
-        <button>Shop Now</button>
-      </Link>
-    </section>
-  );
-}
 
 export function MiniBanner() {
   return (
@@ -85,7 +71,7 @@ export function SmallBanner() {
 export function PageHeader() {
   return (
     <section id="page-header">
-      <h2>#Discover Crafts</h2>
+      <h2>#made_in_SriLanka</h2>
     </section>
   )
 }

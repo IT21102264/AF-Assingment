@@ -17,7 +17,7 @@ export default function Seller() {
               paddingTop: 20,
             }}
           >
-            <img src={logo} alt="Culture Trail Logo" className="App-logo" />
+            <img src={logo} alt="Culture Trail Logo" className="logo-img" />
           </Link>
         </div>
         <div className="items">

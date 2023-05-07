@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-   background-color: #f2f6f1;
+   background-color: #f6f4f1;
  
 }
 
@@ -23,7 +23,7 @@ code {
 
 h1 {
   font-size: 50px;
-  line-height: 64px;
+  line-height: 52px;
   color: #222;
 }
 
@@ -54,24 +54,24 @@ p {
 }
 
 .section-m1 {
-  margin: 40px 0;
+  margin: 40px;
 }
 
 header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: #cffaee;
+  background-color: #ffe6d3;
   padding: 20px 80px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
 
-header h1 {
+header .logo {
   display: flex;
   align-items: center;
-  color: #1a1a1a;
-  font-family: "McLaren", cursive;
-  font-weight: 200;
+}
+.logo-img {
+  height: 50px;
 }
 
 header nav {
@@ -95,9 +95,6 @@ header nav div.active {
   border-radius: 50%;
   border: none;
 } */
-.App-logo {
-  height: 50px;
-}
 
 .navbar-icons {
   display: flex;
@@ -105,7 +102,7 @@ header nav div.active {
   align-items: center;
 }
 #slider {
-  margin: 40px;
+  margin: 50px 150px;
 }
 .carousel-indicators li {
   background-color: #ccc; /* Inactive indicator color */
@@ -130,7 +127,7 @@ header nav div.active {
 .carousel-caption button {
   padding: 8px;
   border-radius: 25px;
-  background-color: #fb7f21;
+  background-color: #e63d3d;
   font-weight:700;
   border: none;
   color: #fff;
@@ -139,47 +136,14 @@ header nav div.active {
 .carousel-caption button:hover {
   background-color: #fff;
   border: 1px solid;
-  color: #fb7f21;
+  color: #fb2121;
   cursor: pointer;
 }
 .carousel-caption h1 {
-  color: #e6753d;
+  color: #fb2121;
 }
 .carousel-control-prev-icon, .carousel-control-next-icon {
-  background-color: orange;
-}
-
-#HomeBanner {
-  background-image: url("./assets/slider1.jpg");
-  background-color: #cffaee;
-  height: 90vh;
-  width: auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top 20% right 0;
-  padding: 0 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#HomeBanner h4 {
-  padding-bottom: 15px;
-}
-
-#HomeBanner h1 {
-  color: #e6753d;
-}
-
-#HomeBanner button {
-  width: 10%;
-  padding: 8px;
-  border-radius: 25px;
-  background-color: #fb7f21;
-  font-weight:700;
-  border: none;
-  color: #fff;
-  cursor: pointer;
+  background-color: red;
 }
 
 #feature {
@@ -193,7 +157,7 @@ header nav div.active {
   width: 180px;
   height: 200px;
   text-align: center;
-  background-color: white;
+  background-color: #f1f1f1;
   padding: 25px 15px;
   box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
   border: 1px solid #cce7d0;
@@ -234,7 +198,7 @@ header nav div.active {
   width: 23%;
   min-width: 250px;
   padding: 10px 12px;
-  border: 1px solid #14c3a2;
+  border: 1px solid #c3a314;
   background-color: white;
   border-radius: 10px;
   cursor: pointer;
@@ -258,17 +222,17 @@ header nav div.active {
   margin: 10px;
   height: 40px;
   border-radius: 5px;
-  background-color: #cce7d0;
+  background-color: #e4e7cc;
   color: black;
   font-weight: 500;
-  border: 1px solid #14c3a2;
+  border: 1px solid #c3a314;
   cursor: pointer;
 }
 
 #productCard .pro button:hover{
-  background-color: #fb7f21;
+  background-color: #e63d3d;
   color: white;
-  border: 1px solid #fb7f21;
+  border: 1px solid #e63d3d;
 }
 
 #action {
@@ -277,17 +241,19 @@ header nav div.active {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url("./assets/sbanner.png");
-  width: 100%;
-  height: 50vh;
+  background-image: url("./assets/sbanner.jpg");
+  width: auto;
+  height: auto;
+  padding: 15px 0;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 10px;
 }
 
 #action h4 {
   font-size: 16px;
-  background-color: #cffaee;
+  background-color: #f5facf;
   padding: 3px;
   border-radius: 10px;
 }
@@ -309,9 +275,9 @@ header nav div.active {
 #action button {
   font-size: 14px;
   font-weight: 600;
-  padding: 15px 30px;
+  padding: 10px 20px;
   color: black;
-  background-color: #cffaee;
+  background-color: #f5facf;
   border-radius: 15px;
   cursor: pointer;
   border: 1px solid #14c3a2;
@@ -451,7 +417,7 @@ header nav div.active {
   margin-bottom: 20px;
 }
 #page-header h2 {
-  color: #f1f1f1;
+  color: #a6ff00;
   text-shadow: 2px 2px 4px #000000;
   font-style: italic;
   font-weight: 700;
@@ -478,6 +444,7 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: 80px;
   background-color: white;
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
@@ -490,8 +457,8 @@ footer .col {
   margin-bottom: 20px;
 }
 
-footer h1 {
-  margin-bottom: 30px;
+footer .logo {
+  margin: 0 30px 20px 0;
 }
 
 footer h4 {
@@ -564,11 +531,6 @@ footer .copyright {
 .popup-content button {
   margin-top: 20px;
 }
-
-
-
-
-
 
 h3 {
   color: black;
