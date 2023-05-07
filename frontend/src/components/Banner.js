@@ -85,7 +85,7 @@ export function SmallBanner() {
 export function PageHeader() {
   return (
     <section id="page-header">
-      <h2>#Discover Crafts</h2>
+      <h2>#made_in_SriLanka</h2>
     </section>
   )
 }

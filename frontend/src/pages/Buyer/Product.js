@@ -9,8 +9,8 @@ export default function Product() {
       <Header />
       <PageHeader />
       <div style={{ marginLeft: 90 }}>
-        <h2>Featured Products</h2>
-        <p>Discover a wide range of herbal products</p>
+        <h2>Products</h2>
+        <p>Discover a wide range of products</p>
       </div>
       <ItemMapper />
       <Footer />
