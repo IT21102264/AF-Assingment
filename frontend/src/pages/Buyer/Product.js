@@ -8,7 +8,7 @@ export default function Product() {
     <div>
       <Header />
       <PageHeader />
-      <div style={{ marginLeft: 90 }}>
+      <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
         <h2>Products</h2>
         <p>Discover a wide range of products</p>
       </div>

@@ -11,7 +11,7 @@ export const SendEmail = (email) => {
   // Checking the role and setting the message accordingly
   if (email.role === "Buyer")
     message =
-      "Start browsing with RB&MS and stand a chance to win exclusive rewards and offers.";
+      "Start browsing with Culture Trail and stand a chance to win exclusive rewards and offers.";
   else if (email.role === "Seller")
     message =
       "Hurrayy!! Now you are a part of the Culture Trail Merchant Community. Start selling your products and set a new height among your peers";
