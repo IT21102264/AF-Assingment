@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import slide1 from "../assets/slider1.jpg";
+import slide1 from "../assets/slider.png";
 import slide2 from "../assets/slider2.jpg";
 import slide3 from "../assets/slider3.jpg";
 import { Link } from "react-router-dom";
@@ -15,25 +15,30 @@ export function Slider() {
     {
       image: slide1,
       caption: {
-        h4: "Trade-in-offer",
-        h2: "Super value deals",
-        h1: "On all products",
-        p: "Pick Your Herbal Cure",
+        h4: "",
+        h2: "Discover the rich cultural heritage of",
+        h1: "Sri Lanka with Culture Trail.",
+        p: "",
       },
       button: "Shop Now",
     },
-    {
-      image: slide2,
-      caption: {},
-      button: "Shop Now",
-    },
+    // {
+    //   image: slide2,
+    //   caption: {
+    //     h4: "",
+    //     h2: "Explore hidden gems and historical landmarks",
+    //     h1: "with our knowledgeable guides.",
+    //     p: "",
+    //   },
+    //   button: "Shop Now",
+    // },
     {
       image: slide3,
       caption: {
-        h4: "Trade-in-offer",
-        h2: "Flash deals",
-        h1: "On selected products",
-        p: "Pick Your Herbal Cure",
+        h4: "",
+        h2: "Discover the Culture Trail's unique handmade crafts,",
+        h1: "showcasing the best of local craftsmanship and design.",
+        p: "",
       },
       button: "Shop Now",
     },
