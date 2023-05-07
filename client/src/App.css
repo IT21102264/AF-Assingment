@@ -252,7 +252,7 @@ nav a:hover {
   overflow: hidden;
 }
 .product .thumb .image img {
-  height: 250px;
+  height: 300px;
   max-width: 100%;
 }
 .product .content {

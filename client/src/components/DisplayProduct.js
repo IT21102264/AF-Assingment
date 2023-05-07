@@ -7,7 +7,7 @@ export default function DisplayProduct() {
 
   useEffect(()=>{
       function getProducts() {
-          axios.get("http://localhost:4000/product/").then((res)=>{
+          axios.get("http://localhost:5000/product/").then((res)=>{
               setProducts(res.data);
           }).catch((err)=>{
               alert(err.message);

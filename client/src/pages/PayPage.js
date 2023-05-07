@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./PayPage.css";
 import Header from '../components/Header';
+import { Button } from '@chakra-ui/react';
 
 
 export default function PayPage() {
@@ -40,7 +41,7 @@ export default function PayPage() {
 return (
   <div>
     <Header />
-    <div class="container">
+    <div class="container_1">
     <center><div class="title">Bill Payment Form</div></center>
     <hr></hr>
       <div class="content">

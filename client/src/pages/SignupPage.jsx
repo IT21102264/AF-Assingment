@@ -102,7 +102,7 @@ export default function SignupPage() {
             <Button
               onClick={async () => {
                 try {
-                  if (cpassword != password) {
+                  if (cpassword !== password) {
                     alert("Password not matching");
                     return;
                   }
