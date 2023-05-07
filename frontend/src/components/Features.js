@@ -1,7 +1,7 @@
 import pic1 from "../assets/f1.jpg";
 import pic2 from "../assets/f2.jpg";
 import pic3 from "../assets/f3.jpg";
-import pic4 from "../assets/f4.jpeg";
+import pic4 from "../assets/f4.jpg";
 import pic5 from "../assets/f5.jpg";
 import React from 'react';
 
@@ -22,7 +22,7 @@ function Features() {
             </div>
             <div className="fe-box">
                 <img src={pic4} alt="" />
-                <h6>Jewellery</h6>
+                <h6>Pottery</h6>
             </div>
             <div className="fe-box">
                 <img src={pic5} alt="" />
