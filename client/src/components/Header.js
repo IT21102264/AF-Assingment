@@ -38,7 +38,7 @@ function Header() {
             <Link to="/shop">Contact</Link>
           </li>
           <li>
-            <Wrap display={role == "admin" ? "block" : "none"}>
+            <Wrap display={role === "admin" ? "block" : "none"}>
               <Link to="/admin">Admin</Link>
             </Wrap>
           </li>

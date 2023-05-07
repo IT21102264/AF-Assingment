@@ -230,3 +230,94 @@ nav a:hover {
   font-weight: 400;
   color: #6c757d;
 }
+/* product display */
+.product {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: 1px solid #ad5100;
+  border-radius: 5px;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+}
+.product:hover{
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+.product .thumb {
+  position: relative;
+  overflow: hidden;
+}
+.product .thumb .image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.product .thumb .image img {
+  height: 300px;
+  max-width: 100%;
+}
+.product .content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1;
+  background-color: #f7f8fa;
+  padding: 0 0 40px;
+}
+.product .content .ratings {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+.product .content .ratings .rating-wrap {
+  font-size: 14px;
+  line-height: 1;
+  position: relative;
+  color: #e4e4e4;
+  white-space: nowrap;
+}
+.product .content .ratings .rating-num {
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 6px;
+  color: #9f9e9e;
+  display: none;
+}
+.product .content .title {
+  font-size: 16px;
+  margin: 10px 0 15px;
+  font-family: Rubik,sans-serif;
+}
+.product .content .price {
+  font-size: 16px;
+  font-family: Rubik,sans-serif;
+  line-height: 1;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.product .content .price span.new {
+  color: #393939;
+  font-weight: 500;
+}
+.product .add-to-cart {
+  display: block;
+  width: 130px;
+  height: 40px;
+  line-height: 40px;
+  background: #eaaa85;
+  text-align: center;
+  border: 0;
+  border-radius: 10px;
+  font-size: 14px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 11;
+  margin: auto;
+  font-weight: 400;
+  color: #fff;
+  font-family: Rubik,sans-serif;
+  text-transform: uppercase;
+}
