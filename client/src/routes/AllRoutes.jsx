@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import AboutPage from "../pages/AboutPage";
 import ShopPage from "../pages/ShopPage";
 import AdminPage from "../pages/AdminPage";
-import { Products } from "../pages/Products";
 import { AddProducts } from "../pages/AddProduct";
 import PayPage from "../pages/PayPage";
 import AdminRoute from "./AdminRoute";
@@ -11,6 +10,7 @@ import SignupPage from "../pages/SignupPage";
 import HomePage from "../pages/HomePage";
 import Cart from "../pages/Cart";
 import { Users } from "../pages/Users";
+import { Products } from "../pages/Product";
 
 export default function Allroutes() {
   return (
