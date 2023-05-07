@@ -2,8 +2,39 @@ import { faBox, faDashboard, faGear, faListSquares, faUser, faUsers } from "@for
 import { Link } from "react-router-dom";
 import SideMenu from "../components/SideMenu";
 import logo from "../assets/logoW.png";
+import { useRef, useState } from "react";
+import axios from "axios";
 
 export function AddProducts() {
+
+    const [productName, setProductName] = useState("");
+    const [description, setDescription] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [image, setImage] = useState("");
+    const [price, setPrice] = useState("");
+    const [discount, setDiscount] = useState("");
+
+    const imageInputRef = useRef(null);
+
+    function convertToBase64(e) {
+        const reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = () => setImage(reader.result);
+        reader.onerror = (error) => console.log("error: ", error);
+    }
+
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        const newProduct = {productName, description, quantity, image, price, discount}
+
+        axios.post("http://localhost:4000/product/addProducts", newProduct).then(()=>{
+            alert("Success")
+        }).catch(error =>{
+            alert(error)
+        })
+    }
+
     return (
         <div>
             <section className="sideMenu">
@@ -32,7 +63,7 @@ export function AddProducts() {
                     </div>
                 </div>
         
-                {/* <div className="card mb-4">
+                <div className="card mb-4">
                     <form onSubmit={(e) => onSubmitHandler(e)}>
                         <header className="card-header">
                             <h4>Product</h4>
@@ -43,27 +74,27 @@ export function AddProducts() {
                         <div className="card-body">
                             <div className="row">
                                 <div className="col-md-4 mb-3">
-                                    <label for="validationCustom01">Product title</label>
+                                    <label htmlFor="validationCustom01">Product title</label>
                                     <input type="text" className="form-control" id="validationCustom01" placeholder="Type here"
-                                        ref={itemName} required />
+                                        onChange={(e)=>{setProductName(e.target.value);}} required />
                                     <div className="valid-feedback">Looks good!</div>
                                 </div>
                                 <div className="col">
-                                    <label for="validationCustom01">Product description</label>
+                                    <label htmlFor="validationCustom01">Product description</label>
                                     <input type="text" className="form-control" id="validationCustom01" placeholder="Type here"
-                                        ref={description} required />
+                                        onChange={(e)=>{setDescription(e.target.value);}} required />
                                     <div className="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col">
-                                    <label for="validationCustom01">Quantity</label>
+                                    <label htmlFor="validationCustom01">Quantity</label>
                                     <input type="number" className="form-control" id="validationCustom01" placeholder="0"
-                                        ref={quantity} required />
+                                        onChange={(e)=>{setQuantity(e.target.value);}} required />
                                     <div className="valid-feedback">Looks good!</div>
                                 </div>
                                 <div className="col">
-                                    <label for="validationCustom01">Image</label>
+                                    <label htmlFor="validationCustom01">Image</label>
                                     <input type="file" className="form-control" id="validationCustom01" placeholder="0.00"
                                         onChange={(e) => convertToBase64(e)} ref={imageInputRef} required />
                                     <div className="valid-feedback">Looks good!</div>
@@ -71,21 +102,21 @@ export function AddProducts() {
                             </div>
                             <div className="row">
                                 <div className="col-md-4 mb-3">
-                                    <label for="validationCustom01">Unit Price</label>
+                                    <label htmlFor="validationCustom01">Unit Price</label>
                                     <input type="text" className="form-control" id="validationCustom01" placeholder="0.00"
-                                        ref={price} required />
+                                        onChange={(e)=>{setPrice(e.target.value);}} required />
                                     <div className="valid-feedback">Looks good!</div>
                                 </div>
                                 <div className="col-md-4 mb-3">
-                                    <label for="validationCustom01">Discount</label>
+                                    <label htmlFor="validationCustom01">Discount</label>
                                     <input type="text" className="form-control" id="validationCustom01" placeholder="0.00"
-                                        ref={discount} required />
+                                        onChange={(e)=>{setDiscount(e.target.value);}} required />
                                     <div className="valid-feedback">Looks good!</div>
                                 </div>
                             </div>
                         </div>
                     </form>
-                </div> */}
+                </div>
             </section>
         </div>
     );

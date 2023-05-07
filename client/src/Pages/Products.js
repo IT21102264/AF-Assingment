@@ -1,10 +1,53 @@
-import { faBox, faDashboard, faGear, faListSquares, faPlus, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBox, faDashboard, faGear, faListSquares, faPenToSquare, faPlus, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import SideMenu from "../components/SideMenu";
 import logo from "../assets/logoW.png";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Modal from 'react-bootstrap/Modal';
 
 export function Products() {
+
+    const [products, setProducts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleEditClick = (product) => {
+        setSelectedProduct(product);
+        setShowModal(true);
+    };
+
+    const handleFormSubmit = (updatedProduct) => {
+        axios.put(`http://localhost:4000/product/${updatedProduct._id}`, updatedProduct)
+          .then((res) => {
+            // Update the products list with the updated product
+            const updatedProducts = products.map((product) => {
+              if (product._id === res.data._id) {
+                return res.data;
+              }
+              return product;
+            });
+            setProducts(updatedProducts);
+            // Close the modal
+            setShowModal(false);
+          })
+          .catch((err) => {
+            alert(err.message);
+          });
+    };
+
+    useEffect(()=>{
+        function getProducts() {
+            axios.get("http://localhost:4000/product/").then((res)=>{
+                setProducts(res.data);
+            }).catch((err)=>{
+                alert(err.message);
+            });
+        }
+        getProducts();
+    }, [])
+
     return (
         <div>
             <section className="sideMenu">
@@ -48,30 +91,94 @@ export function Products() {
                                 <thead>
                                 <tr>
                                     <th>#ID</th>
-                                    <th scope="col">Customer ID</th>
-                                    <th scope="col">Order Date</th>
-                                    <th scope="col">Total Price</th>
-                                    <th scope="col">Order Status</th>
-                                    <th scope="col" className="text-center">
-                                    Action
-                                    </th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Discount Price</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td scope="col"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td className="text-center" style={{ color: "blue" }}></td>
-                                    </tr>
+                                    {products.map((product, index) => (
+                                        <tr key={index}>
+                                            <td>{product._id.slice(-4)}</td>
+                                            <td>{product.productName}</td>
+                                            <td>
+                                                <img src={product.image} style={{width:"50px", height:"50px"}} alt={product.productName} />
+                                            </td>
+                                            <td>{product.description}</td>
+                                            <td>{product.quantity}</td>
+                                            <td>{product.price}</td>
+                                            <td>{product.discount}</td>
+                                            <td>
+                                                <button onClick={() => handleEditClick(product)}>
+                                                <FontAwesomeIcon icon={faPenToSquare} />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
                                 </tbody>
                             </table>
+                            {/* Render the modal */}
+                            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                                <Modal.Header closeButton>
+                                <Modal.Title>Edit Product</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                {/* Render the product update form */}
+                                <UpdateForm product={selectedProduct} onSubmit={handleFormSubmit} />
+                                </Modal.Body>
+                            </Modal>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
     );
+}
+
+function UpdateForm({ product, onSubmit }) {
+    const [productName, setProductName] = useState(product?.productName || '');
+    const [description, setDescription] = useState(product?.description || '');
+    const [quantity, setQuantity] = useState(product?.quantity || '');
+    const [price, setPrice] = useState(product?.price || '');
+    const [discount, setDiscount] = useState(product?.discount || '');
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const updatedProduct = {
+        _id: product._id,
+        productName,
+        description,
+        quantity,
+        price,
+        discount,
+      };
+      onSubmit(updatedProduct);
+    };
+  
+    return (
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label> Product Name:
+            <input className="col-md-4 mb-3" type="text" value={productName} onChange={(event) => setProductName(event.target.value)} />
+          </label>
+          <label> Description:
+            <input className="col-md-4 mb-3" type="text" value={description} onChange={(event) => setDescription(event.target.value)} />
+          </label>
+          <label> Quantity:
+            <input className="col-md-4 mb-3" type="text" value={quantity} onChange={(event) => setQuantity(event.target.value)} />
+          </label>
+          <label> Price:
+            <input className="col-md-4 mb-3" type="text" value={price} onChange={(event) => setPrice(event.target.value)} />
+          </label>
+          <label> Discount:
+            <input className="col-md-4 mb-3" type="text" value={discount} onChange={(event) => setDiscount(event.target.value)} />
+          </label>
+        </div>
+        <input className="btn btn-success" type="submit" value="Submit" />
+      </form>
+    )
 }

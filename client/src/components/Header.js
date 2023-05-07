@@ -46,7 +46,7 @@ function Header() {
                 <Link to="/login">Login</Link>
               </li>
               <li>
-                <Link to="/register">Register</Link>
+                <Link to="/signup">Register</Link>
               </li>
               <li>
                 <Link to="/admin">Account</Link>
