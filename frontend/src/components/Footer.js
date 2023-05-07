@@ -9,8 +9,8 @@ function Footer () {
     return (
         <footer className="section-p1">
             <div className="col">
-                <div>
-                    <img src={logo} alt="Culture Trail Logo" className="App-logo" />
+                <div className="logo">
+                    <img src={logo} alt="Culture Trail Logo" className="logo-img" />
                 </div>
                 <h4>Contact</h4>
                 <p><strong>Address: </strong>New Kandy Road, Malabe</p>

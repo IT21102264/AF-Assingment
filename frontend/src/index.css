@@ -66,12 +66,12 @@ header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
 }
 
-header h1 {
+header .logo {
   display: flex;
   align-items: center;
-  color: #1a1a1a;
-  font-family: "McLaren", cursive;
-  font-weight: 200;
+}
+.logo-img {
+  height: 50px;
 }
 
 header nav {
@@ -95,9 +95,6 @@ header nav div.active {
   border-radius: 50%;
   border: none;
 } */
-.App-logo {
-  height: 50px;
-}
 
 .navbar-icons {
   display: flex;
@@ -451,7 +448,7 @@ header nav div.active {
   margin-bottom: 20px;
 }
 #page-header h2 {
-  color: #f1f1f1;
+  color: #a6ff00;
   text-shadow: 2px 2px 4px #000000;
   font-style: italic;
   font-weight: 700;
@@ -490,8 +487,8 @@ footer .col {
   margin-bottom: 20px;
 }
 
-footer h1 {
-  margin-bottom: 30px;
+footer .logo {
+  margin: 0 30px 20px 0;
 }
 
 footer h4 {
@@ -564,11 +561,6 @@ footer .copyright {
 .popup-content button {
   margin-top: 20px;
 }
-
-
-
-
-
 
 h3 {
   color: black;

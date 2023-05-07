@@ -70,8 +70,8 @@ function Header() {
   // Rendering the Header component
   return (
     <header>
-      <div>
-        <img src={logo} alt="Culture Trail Logo" className="App-logo" />
+      <div className="logo">
+        <img src={logo} alt="Culture Trail Logo" className="logo-img" />
       </div>
       <NavBar />
       <div className="navbar-icons">
