@@ -1,12 +1,16 @@
 import { Routes, Route } from "react-router-dom";
 import AboutPage from "../pages/AboutPage";
-import HomePage from "../pages/HomePage";
 import ShopPage from "../pages/ShopPage";
-import LoginPage from "../pages/LoginPage";
-import SignupPage from "../pages/SignupPage";
 import AdminPage from "../pages/AdminPage";
 import { Products } from "../pages/Products";
 import { AddProducts } from "../pages/AddProduct";
+import PayPage from "../pages/PayPage";
+import AdminRoute from "./AdminRoute";
+import LoginPage from "../pages/LoginPage";
+import SignupPage from "../pages/SignupPage";
+import HomePage from "../pages/HomePage";
+import Cart from "../pages/Cart";
+import { Users } from "../pages/Users";
 
 export default function Allroutes() {
   return (
@@ -16,9 +20,20 @@ export default function Allroutes() {
       <Route path="/about" element={<AboutPage></AboutPage>}></Route>
       <Route path="/login" element={<LoginPage></LoginPage>}></Route>
       <Route path="/signup" element={<SignupPage></SignupPage>}></Route>
+      <Route
+        path="/admin"
+        element={
+          <AdminRoute>
+            <AdminPage />
+          </AdminRoute>
+        }
+      />
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/admin/products" element={<Products />} />
       <Route path="/admin/addProducts" element={<AddProducts />} />
+      <Route path="/cart" element={<Cart></Cart>} />
+      <Route path="/paypage" element={<PayPage></PayPage>} />
+      <Route path="/admin/users" element={<Users></Users>} />
     </Routes>
   );
 }

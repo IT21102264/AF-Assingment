@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const productRouter = require("./routes/product");
 const { userRouter } = require("./routes/UserRoutes");
+const paymentRouter = require("./routes/payment");
 const { userValidator } = require("./middleware/uservalidator");
 const { authenticator } = require("./middleware/authenticator");
 const { userLogger } = require("./middleware/userLogger");
@@ -27,6 +28,7 @@ app.use(userLogger);
 app.use("/user", roleValidator);
 app.use("/user", userRouter);
 app.use("/product", productRouter);
+app.use("/payment", paymentRouter);
 
 // Connect to MongoDB database and start server
 mongoose

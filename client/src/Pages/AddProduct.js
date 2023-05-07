@@ -28,7 +28,7 @@ export function AddProducts() {
 
         const newProduct = {productName, description, quantity, image, price, discount}
 
-        axios.post("http://localhost:4000/product/addProducts", newProduct).then(()=>{
+        axios.post("http://localhost:5000/product/addProducts", newProduct).then(()=>{
             alert("Success")
         }).catch(error =>{
             alert(error)

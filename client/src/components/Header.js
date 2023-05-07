@@ -7,9 +7,12 @@ import {
   faShoppingCart,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import { Wrap } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const { auth, token, role, username: user } = useSelector((state) => state);
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -34,6 +37,11 @@ function Header() {
           <li>
             <Link to="/shop">Contact</Link>
           </li>
+          <li>
+            <Wrap display={role === "admin" ? "block" : "none"}>
+              <Link to="/admin">Admin</Link>
+            </Wrap>
+          </li>
         </ul>
       </nav>
       <div className="iconBtn">
@@ -43,13 +51,10 @@ function Header() {
           {showMenu && (
             <ul className="dropdown-menu">
               <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login">{!auth && "Login"}</Link>
               </li>
               <li>
-                <Link to="/signup">Register</Link>
-              </li>
-              <li>
-                <Link to="/admin">Account</Link>
+                <Link to="/signup">{!auth && "Signup"}</Link>
               </li>
             </ul>
           )}

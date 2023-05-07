@@ -19,7 +19,7 @@ export function Products() {
     };
 
     const handleFormSubmit = (updatedProduct) => {
-        axios.put(`http://localhost:4000/product/${updatedProduct._id}`, updatedProduct)
+        axios.put(`http://localhost:5000/product/${updatedProduct._id}`, updatedProduct)
           .then((res) => {
             // Update the products list with the updated product
             const updatedProducts = products.map((product) => {
@@ -39,7 +39,7 @@ export function Products() {
 
     useEffect(()=>{
         function getProducts() {
-            axios.get("http://localhost:4000/product/").then((res)=>{
+            axios.get("http://localhost:5000/product/").then((res)=>{
                 setProducts(res.data);
             }).catch((err)=>{
                 alert(err.message);
