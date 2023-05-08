@@ -38,9 +38,7 @@ function NavBar() {
             to="/buyer/product"
             style={{ textDecoration: "none", color: "black" }}
           >
-            <div className={selection === "Products" ? "active" : ""}>
-              Shop
-            </div>
+            <div className={selection === "Products" ? "active" : ""}>Shop</div>
           </Link>
 
           {user1[0]?.role === "Buyer" && (
