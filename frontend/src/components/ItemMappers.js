@@ -1,7 +1,7 @@
 import Item from "./Item";
 import { UseItemContext } from "../context/useItemContext";
 import { React, useState } from "react";
-import { SearchBar } from "./SearchComponent";
+import { SearchBar } from "./SearchBar";
 import { UseUserContext } from "../context/useUserContext";
 
 export const ItemMapper = () => {
