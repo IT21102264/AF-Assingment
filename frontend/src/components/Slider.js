@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import slide1 from "../assets/slider.png";
+import slide1 from "../assets/slider1.png";
 import slide2 from "../assets/slider2.jpg";
 import slide3 from "../assets/slider3.jpg";
 import { Link } from "react-router-dom";
@@ -22,16 +22,16 @@ export function Slider() {
       },
       button: "Shop Now",
     },
-    // {
-    //   image: slide2,
-    //   caption: {
-    //     h4: "",
-    //     h2: "Explore hidden gems and historical landmarks",
-    //     h1: "with our knowledgeable guides.",
-    //     p: "",
-    //   },
-    //   button: "Shop Now",
-    // },
+    {
+      image: slide2,
+      caption: {
+        h4: "",
+        h2: "Explore hidden gems and historical landmarks",
+        h1: "with our knowledgeable guides.",
+        p: "",
+      },
+      button: "Shop Now",
+    },
     {
       image: slide3,
       caption: {
